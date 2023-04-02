@@ -1,18 +1,18 @@
-<?php
+<!-- <?php
 	session_start();
 	include('assets/inc/config.php');
-		if(isset($_POST['add_patient_presc']))
+		if(isset($_POST['add_appointment']))
 		{
-			$pres_pat_name = $_POST['pres_pat_name'];
-			$pres_pat_number = $_POST['pres_pat_number'];
-            $pres_pat_type = $_POST['pres_pat_type'];
+			$nama_pasien = $_POST['nama_user'];
+			$nik_pasien = $_POST['nik'];
+            $jk_pasien = $_POST['jk_user'];
             $pres_pat_addr = $_POST['pres_pat_addr'];
             $pres_pat_age = $_POST['pres_pat_age'];
            
             $pres_ins = $_POST['pres_ins'];
     
             //sql to insert captured values
-			$query="INSERT INTO  his_prescriptions  (pres_pat_name, pres_pat_number, pres_pat_type, pres_pat_addr, pres_pat_age, pres_number, pres_pat_ailment, pres_ins) VALUES(?,?,?,?,?,?,?,?)";
+			$query="INSERT INTO  antrean  (pres_pat_name, pres_pat_number, pres_pat_type, pres_pat_addr, pres_pat_age, pres_number, pres_pat_ailment, pres_ins) VALUES(?,?,?,?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('ssssssss', $pres_pat_name, $pres_pat_number, $pres_pat_type, $pres_pat_addr, $pres_pat_age, $pres_number, $pres_pat_ailment, $pres_ins);
 			$stmt->execute();
@@ -163,7 +163,7 @@
                                                         <textarea required="required"  type="text" class="form-control" name="pres_ins" id="editor"></textarea>
                                                 </div>
 
-                                                <button type="submit" name="add_patient_presc" class="ladda-button btn btn-primary" data-style="expand-right"> SUBMIT</button>
+                                                <button type="submit" name="add_appointment" class="ladda-button btn btn-primary" data-style="expand-right"> SUBMIT</button>
 
                                             </form>
                                             <!--End Patient Form-->
@@ -216,4 +216,4 @@
         
     </body>
 
-</html>
+</html> -->

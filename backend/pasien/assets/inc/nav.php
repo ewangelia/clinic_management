@@ -1,15 +1,15 @@
-<?php
-    $doc_id = $_SESSION['doc_id'];
-    $doc_number = $_SESSION['doc_number'];
-    $ret="SELECT * FROM  his_docs WHERE doc_id = ? AND doc_number = ?";
+<!-- <?php
+    $id_pasien = $_SESSION['id_user'];
+    $nik_pasien = $_SESSION['nik'];
+    $ret="SELECT * FROM  users WHERE id_user = ? AND nik = ?";
     $stmt= $mysqli->prepare($ret) ;
-    $stmt->bind_param('is',$doc_id, $doc_number);
+    $stmt->bind_param('is',$id_pasien $nik_pasien);
     $stmt->execute() ;//ok
     $res=$stmt->get_result();
     //$cnt=1;
     while($row=$res->fetch_object())
     {
-?>
+?> -->
     <div class="navbar-custom">
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
@@ -33,7 +33,7 @@
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="assets/images/users/<?php echo $row->doc_dpic;?>" alt="dpic" class="rounded-circle">
                     <span class="pro-user-name ml-1">
-                        <?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?> <i class="mdi mdi-chevron-down"></i> 
+                        <?php echo $row->nama_user;?>  <i class="mdi mdi-chevron-down"></i> 
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -48,7 +48,7 @@
                         <span>My Account</span>
                     </a> -->
 
-                    <a href="his_doc_update-account.php" class="dropdown-item notify-item">
+                    <a href="pasien_update-account.php" class="dropdown-item notify-item">
                         <i class="fas fa-user-tag"></i>
                         <span>Update Account</span>
                     </a>
@@ -57,7 +57,7 @@
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="his_doc_logout_partial.php" class="dropdown-item notify-item">
+                    <a href="pasien_logout_partial.php" class="dropdown-item notify-item">
                         <i class="fe-log-out"></i>
                         <span>Logout</span>
                     </a>

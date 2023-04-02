@@ -79,7 +79,7 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th data-toggle="true">Nama Pasien</th>
-                                                <th data-hide="phone">TTL</th>
+                                                <th data-hide="phone">Tanggal Lahir</th>
                                                 <th data-hide="phone">Jenis Kelamin</th>
                                                 <th data-hide="phone">No. BPJS</th>
                                                 <th data-hide="phone">Alamat</th>

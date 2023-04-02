@@ -4,8 +4,8 @@
   include('assets/inc/checklogin.php');
   check_login();
 
-  $doc_id=$_SESSION['doc_id'];
-  //$doc_number = $_SERVER['doc_number'];
+  $id_user=$_SESSION['id_user'];
+//   $nik = $_SERVER['nik'];
 ?>
 
 <!DOCTYPE html>
@@ -32,17 +32,15 @@
 
             <!--Get Details Of A Single User And Display Them Here-->
             <?php
-                $pat_number=$_GET['pat_number'];
-                $pat_id=$_GET['pat_id'];
-                $ret="SELECT  * FROM his_patients WHERE pat_id=?";
+                $nik=$_GET['nik'];
+                $id_user=$_GET['id_user'];
+                $level_user=$_GET['level_user'];
+                $ret="SELECT  * FROM users WHERE id_user=? ";
                 $stmt= $mysqli->prepare($ret) ;
-                $stmt->bind_param('i',$pat_id);
+                $stmt->bind_param('i',$id_user);
                 $stmt->execute() ;//ok
                 $res=$stmt->get_result();
-                //$cnt=1;
-                while($row=$res->fetch_object())
-            {
-                $mysqlDateTime = $row->pat_date_joined;
+              
             ?>
             <div class="content-page">
                 <div class="content">
@@ -61,7 +59,7 @@
                                             <li class="breadcrumb-item active">View Patients</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title"><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>'s Profile</h4>
+                                    <h4 class="page-title"><?php echo $row->nama_user;?> 's Profile</h4>
                                 </div>
                             </div>
                         </div>
@@ -76,15 +74,15 @@
                                     
                                     <div class="text-left mt-3">
                                         
-                                        <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2"><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2"><?php echo $row->pat_phone;?></span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Address :</strong> <span class="ml-2"><?php echo $row->pat_addr;?></span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Date Of Birth :</strong> <span class="ml-2"><?php echo $row->pat_dob;?></span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Age :</strong> <span class="ml-2"><?php echo $row->pat_age;?> Years</span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Ailment :</strong> <span class="ml-2"><?php echo $row->pat_ailment;?></span></p>
+                                        <p class="text-muted mb-2 font-13"><strong>Nama :</strong> <span class="ml-2"><?php echo $row->nama_user;?> </span></p>
+                                        <p class="text-muted mb-2 font-13"><strong>No Telp :</strong><span class="ml-2"><?php echo $row->no_telp_user;?></span></p>
+                                        <p class="text-muted mb-2 font-13"><strong>Alamat :</strong> <span class="ml-2"><?php echo $row->alamat_user;?></span></p>
+                                        <p class="text-muted mb-2 font-13"><strong>TTL :</strong> <span class="ml-2"><?php echo $row->ttl_user;?></span></p>
+                                        <!-- <p class="text-muted mb-2 font-13"><strong>Age :</strong> <span class="ml-2"><?php echo $row->pat_age;?> Years</span></p> -->
+                                        <!-- <p class="text-muted mb-2 font-13"><strong>Diagnosa :</strong> <span class="ml-2"><?php echo $row->diagnosa;?></span></p> -->
                                         <hr>
-                                        <p class="text-muted mb-2 font-13"><strong>Date Recorded :</strong> <span class="ml-2"><?php echo date("d/m/Y - h:m", strtotime($mysqlDateTime));?></span></p>
-                                        <hr>
+                                        <!-- <p class="text-muted mb-2 font-13"><strong>Date Recorded :</strong> <span class="ml-2"><?php echo date("d/m/Y - h:m", strtotime($mysqlDateTime));?></span></p>
+                                        <hr> -->
 
 
 
@@ -101,17 +99,17 @@
                                     <ul class="nav nav-pills navtab-bg nav-justified">
                                         <li class="nav-item">
                                             <a href="#aboutme" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                                Prescription
+                                                Resep Obat
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        <!-- <li class="nav-item">
                                             <a href="#timeline" data-toggle="tab" aria-expanded="true" class="nav-link ">
                                                  Vitals
                                             </a>
-                                        </li>
+                                        </li> -->
                                         <li class="nav-item">
                                             <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                                Lab Records
+                                                Tindakan
                                             </a>
                                         </li>
                                     </ul>
@@ -120,24 +118,24 @@
                                         <div class="tab-pane show active" id="aboutme">
                                              <ul class="list-unstyled timeline-sm">
                                                 <?php
-                                                    $pres_pat_number =$_GET['pat_number'];
-                                                    $ret="SELECT  * FROM his_prescriptions WHERE pres_pat_number = '$pres_pat_number'";
+                                                    $id_data_user =$_GET['id_user'];
+                                                    $ret="SELECT  * FROM rekam_medis WHERE id_data_user = '$id_data_user'";
                                                     $stmt= $mysqli->prepare($ret) ;
-                                                    // $stmt->bind_param('i',$pres_pat_number );
+                                        
                                                     $stmt->execute() ;//ok
                                                     $res=$stmt->get_result();
-                                                    //$cnt=1;
+                                                
                                                     
                                                     while($row=$res->fetch_object())
                                                         {
-                                                    $mysqlDateTime = $row->pres_date; //trim timestamp to date
+                                                    $mysqlDateTime = $row->tgl_periksa; //trim timestamp to date
 
                                                 ?>
                                                     <li class="timeline-sm-item">
                                                         <span class="timeline-sm-date"><?php echo date("Y-m-d", strtotime($mysqlDateTime));?></span>
-                                                        <h5 class="mt-0 mb-1"><?php echo $row->pres_pat_ailment;?></h5>
+                                                        <h5 class="mt-0 mb-1"><?php echo $row->diagnosa;?></h5>
                                                         <p class="text-muted mt-2">
-                                                            <?php echo $row->pres_ins;?>
+                                                            <?php echo $row->resep_obat;?>
                                                         </p>
 
                                                     </li>
@@ -147,7 +145,7 @@
                                         </div> <!-- end tab-pane -->
                                         <!-- end Prescription section content -->
 
-                                        <div class="tab-pane show " id="timeline">
+                                        <!-- <div class="tab-pane show " id="timeline">
                                             <div class="table-responsive">
                                                 <table class="table table-borderless mb-0">
                                                     <thead class="thead-light">
@@ -159,7 +157,7 @@
                                                             <th>Date Recorded</th>
                                                         </tr>
                                                     </thead>
-                                                    <?php
+                                                    <!-- <?php
                                                         $vit_pat_number =$_GET['pat_number'];
                                                         $ret="SELECT  * FROM his_vitals WHERE vit_pat_number = '$vit_pat_number'";
                                                         $stmt= $mysqli->prepare($ret) ;
@@ -172,27 +170,15 @@
                                                             {
                                                         $mysqlDateTime = $row->vit_daterec; //trim timestamp to date
 
-                                                    ?>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><?php echo $row->vit_bodytemp;?>°C</td>
-                                                                <td><?php echo $row->vit_heartpulse;?>BPM</td>
-                                                                <td><?php echo $row->vit_resprate;?>bpm</td>
-                                                                <td><?php echo $row->vit_bloodpress;?>mmHg</td>
-                                                                <td><?php echo date("Y-m-d", strtotime($mysqlDateTime));?></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    <?php }?>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <!-- end vitals content-->
+                                                    ?> -->
+                                                        
+                                
 
                                         <div class="tab-pane" id="settings">
                                             <ul class="list-unstyled timeline-sm">
                                                 <?php
-                                                    $lab_pat_number =$_GET['pat_number'];
-                                                    $ret="SELECT  * FROM his_laboratory WHERE  	lab_pat_number  ='$lab_pat_number'";
+                                                    $id_data_user =$_GET['id_user'];
+                                                    $ret="SELECT  * FROM rekam_media WHERE  id_data_user  ='$id_data_user'";
                                                     $stmt= $mysqli->prepare($ret) ;
                                                     // $stmt->bind_param('i',$lab_pat_number);
                                                     $stmt->execute() ;//ok
@@ -201,29 +187,29 @@
                                                     
                                                     while($row=$res->fetch_object())
                                                         {
-                                                    $mysqlDateTime = $row->lab_date_rec; //trim timestamp to date
+                                                    $mysqlDateTime = $row->tgl_periksa; //trim timestamp to date
 
                                                 ?>
                                                     <li class="timeline-sm-item">
                                                         <span class="timeline-sm-date"><?php echo date("Y-m-d", strtotime($mysqlDateTime));?></span>
-                                                        <h3 class="mt-0 mb-1"><?php echo $row->lab_pat_ailment;?></h3>
+                                                        <h3 class="mt-0 mb-1"><?php echo $row->diagnosa;?></h3>
                                                         <hr>
                                                         <h5>
-                                                           Laboratory  Tests
+                                                           Tindakan
                                                         </h5>
                                                         
                                                         <p class="text-muted mt-2">
-                                                            <?php echo $row->lab_pat_tests;?>
+                                                            <?php echo $row->tindakan;?>
                                                         </p>
                                                         <hr>
-                                                        <h5>
+                                                        <!-- <h5>
                                                            Laboratory Results
                                                         </h5>
                                                         
                                                         <p class="text-muted mt-2">
                                                             <?php echo $row->lab_pat_results;?>
                                                         </p>
-                                                        <hr>
+                                                        <hr> -->
 
                                                     </li>
                                                 <?php }?>

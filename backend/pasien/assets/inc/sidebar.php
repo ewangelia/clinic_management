@@ -10,7 +10,7 @@
                             <li class="menu-title">Navigation</li>
 
                             <li>
-                                <a href="his_doc_dashboard.php">
+                                <a href="pasien_dashboard.php">
                                     <i class="fe-airplay"></i>
                                     <span> Dashboard </span>
                                 </a>
@@ -18,7 +18,7 @@
                             </li>
 
                             <li>
-                                <a href="his_doc_register_patient.php">
+                                <a href="pasien_appointment.php">
                                     <i class="fab fa-accessible-icon "></i>
                                     <span> Appointment</span>
                                     <span class="menu-arrow"></span>
@@ -28,9 +28,9 @@
                           
 
                             <li>
-                                <a href="his_doc_register_patient.php">
+                                <a href="rekam_medis_pasien.php">
                                     <i class="fab fa-accessible-icon "></i>
-                                    <span> Records</span>
+                                    <span> My Records</span>
                                     <span class="menu-arrow"></span>
                                 </a>
                             </li>

@@ -31,7 +31,7 @@
                                         <a href="doc_view_patients.php">Daftar Pasien</a>
                                     </li>
                                     <li>
-                                        <a href="his_doc_manage_patient.php">Manage Pasien</a>
+                                        <a href="doc_manage_rm.php">Manage Rekam Medis</a>
                                     </li>
                                 </ul>
                             </li>

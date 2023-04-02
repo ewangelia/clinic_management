@@ -129,7 +129,7 @@
                                                     <th>Nama</th>
                                                     <th>Alamat</th>
                                                     <th>No HP</th>
-                                                    <th>TTL</th>
+                                                    <th>Tanggal Lahir</th>
                                                     <th>Umur</th>
                                                     <th>Aksi</th>
                                                 </tr>
