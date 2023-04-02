@@ -32,17 +32,17 @@
            if ($users["level_user"] == "1") {
                // Jika user adalah admin, maka simpan level user pada session dan redirect ke halaman utama admin
                session_start();
-               $_SESSION["level"] = "admin";
+               $_SESSION["id_user"] = "$id_user";
                header("Location: backend\admin");
            } else if ($users["level_user"] == "2") {
                // Jika user adalah dokter, maka simpan level user pada session dan redirect ke halaman utama dokter
                session_start();
-               $_SESSION["level"] = "dokter";
+               $_SESSION["id_user"] = "$id_user";
                header("Location: backend\doc");
            } else if ($users["level_user"] == "3") {
                // Jika user adalah dokter, maka simpan level user pada session dan redirect ke halaman utama dokter
                session_start();
-               $_SESSION["level"] = "pasien";
+               $_SESSION["id_user"] = "$id_user";
                header("Location: pasien_dashboard.php");
            } else {
                // Jika user tidak memiliki level yang sesuai, maka tampilkan pesan error

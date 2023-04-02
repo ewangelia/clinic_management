@@ -4,7 +4,7 @@
   include('assets/inc/checklogin.php');
   check_login();
   $id_user=$_SESSION['id_user'];
-  $nik = $_SESSION['nik'];
+//   $nik = $_SESSION['nik'];
 
 ?>
 <!DOCTYPE html>
